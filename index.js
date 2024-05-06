@@ -7,7 +7,7 @@ const client = new Client({
 
 client.on('ready', async() => {
 
-    console.log(`Status : ${client.userpc.username} is ready!`);
+    console.log(`Status : ${client.rpc.username} is ready!`);
 
     const rpc = new RichPresence()
         .setApplicationId(config.CLIENT.APP_ID)
@@ -75,8 +75,8 @@ client.on('ready', async() => {
         }
         /*rpc.addButton(config.BUTTON_1.BUTTON_TEXT, config.BUTTON_1.BUTTON_LINK)
         rpc.addButton(config.BUTTON_2.BUTTON_TEXT, config.BUTTON_2.BUTTON_LINK)*/
-        // client.userpc.setStatus("dnd");
-        client.userpc.setActivity(rpc.toJSON());
+        // client.rpc.setStatus("dnd");
+        client.rpc.setActivity(rpc.toJSON());
 });
 
 client.login(config.CLIENT.TOKEN);
