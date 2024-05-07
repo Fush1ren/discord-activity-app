@@ -5,9 +5,17 @@ const client = new Client({
     checkUpdate: false,
 });
 
-client.on('ready', async() => {
 
-    console.log(`Status : ${client.rpc.username} is ready!`);
+client.on('ready', async() => {
+    let name = "";
+    let details = "";
+    let state = "";
+    let time = config.ACTIVITY.TYPE.PLAYING.TIME;
+    let type = config.TYPE.toUpperCase();
+    let largeImage = config.LARGE_IMAGE;
+    let smallImage = config.SMALL_IMAGE;
+
+    console.log(`Status : ${client.user.username} is ready!`);
 
     const rpc = new RichPresence()
         .setApplicationId(config.CLIENT.APP_ID)
@@ -76,7 +84,7 @@ client.on('ready', async() => {
         /*rpc.addButton(config.BUTTON_1.BUTTON_TEXT, config.BUTTON_1.BUTTON_LINK)
         rpc.addButton(config.BUTTON_2.BUTTON_TEXT, config.BUTTON_2.BUTTON_LINK)*/
         // client.rpc.setStatus("dnd");
-        client.rpc.setActivity(rpc.toJSON());
+        client.user.setActivity(rpc.toJSON());
 });
 
 client.login(config.CLIENT.TOKEN);
